@@ -1,26 +1,15 @@
 <template>
-  <div class="g-content">
-    <h1>{{title}}</h1>
-    <input 
-      type="text" 
-      v-model="message" 
-    />
-    <p>input message=> {{message}}</p>
-    <input 
-      type="button"
-      value="DEVELOP"
-      @click="commitModeToDev"
-    />
-    <input 
-      type="button"
-      value="PRODUCT"
-      @click="commitModeToPro"
-    />
-    <p>mode=>{{mode}}</p>
+  <div>
+    <router-link to="/">Top</router-link>
+    <router-link to="/about">About</router-link>
+    <router-link to="/profile">Profile</router-link>
+    <router-link to="/contact">Contact</router-link>
+    <router-view></router-view>
   </div>
 </template>
 <script>
 import {mapState, mapMutations, mapActions} from 'vuex';
+import urls from './modules/url';
 
 export default {
   data() {
@@ -28,6 +17,9 @@ export default {
       title: 'Welcome to Vue world',
       message:''
     }
+  },
+  beforeMount() {
+    urls.getUrlParams();
   },
   computed: mapState(["mode"]),
   methods: mapMutations(["commitModeToDev","commitModeToPro"])
