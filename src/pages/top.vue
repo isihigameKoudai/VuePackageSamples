@@ -17,7 +17,8 @@
   </div>
 </template>
 <script>
-import api from './modules/api';
+import { mapMutations } from 'vuex';
+import api from '../modules/api';
 
 export default {
   data() {

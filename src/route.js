@@ -1,13 +1,14 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Top from './top';
-import About from './about';
-import Contact from './contact';
-import Profile from './profile';
+import Top from './pages/top';
+import About from './pages/about';
+import Contact from './pages/contact';
+import Profile from './pages/profile';
 
 Vue.use(VueRouter);
 
+//ルーティング
 const routes = [
   {
     path: '/',

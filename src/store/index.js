@@ -4,7 +4,12 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 const state = {
-  mode: ''
+  mode: '',
+  modal: {
+    isShow: false,
+    contentt: ""
+  },
+  isLoading: false
 };
 
 //Mutaions is synchronous only methods to change state values.
@@ -14,6 +19,12 @@ const mutations = {
   },
   commitModeToPro(state,payload) {
     state.mode = 'production'; 
+  },
+  commitModal(state,payload) {
+    state.modal = payload;
+  },
+  commitLoading(state,payload) {
+    state.isLoading = payload;
   }
 };
 
@@ -29,6 +40,12 @@ const actions = {
   },
   updateModePro({commit},payload) {
     commit('commitModeToPro',payload);
+  },
+  openModal({commit},payload) {
+    commit('commitModal',{isShow: true,content: payload});
+  },
+  closeModal({commit},payload) {
+    commit('commitModal',{isShow: false,content: ""});
   }
 };
 

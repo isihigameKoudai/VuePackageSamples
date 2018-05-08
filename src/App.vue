@@ -5,11 +5,17 @@
     <router-link to="/profile">Profile</router-link>
     <router-link to="/contact">Contact</router-link>
     <router-view></router-view>
+
+    <!-- モーダルの実装 -->
+    <ModalWrapper />
   </div>
 </template>
 <script>
 import {mapState, mapMutations, mapActions} from 'vuex';
 import urls from './modules/url';
+
+//コンポーネントの取り込み
+import ModalWrapper from './components/organisms/ModalWrapper';
 
 export default {
   data() {
@@ -22,7 +28,10 @@ export default {
     urls.getUrlParams();
   },
   computed: mapState(["mode"]),
-  methods: mapMutations(["commitModeToDev","commitModeToPro"])
+  methods: mapMutations(["commitModeToDev","commitModeToPro"]),
+  components: {
+    ModalWrapper
+  }
 }
 </script>
 <style lang="scss" scoped>
